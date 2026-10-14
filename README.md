@@ -1,6 +1,4 @@
-### Avinash Gaurav
-
-Technical Product Manager, Bengaluru. B2B SaaS and cloud FinOps. I build the AI tools I spec.
+### Human-in-the-loop, for now.
 
 **How I build with AI: the model reads, the code decides.** Models extract, summarise and suggest. Plain, tested code does the counting, the state changes and the final call. Anything the model cannot back with a source gets flagged or dropped, not shipped.
 
@@ -19,5 +17,3 @@ Technical Product Manager, Bengaluru. B2B SaaS and cloud FinOps. I build the AI 
 - **ZopDev Technologies**, Technical PM (Jul 2025 to now): multi-cloud FinOps platform
 - **Jubilant Motorworks**, Associate PM (May 2024 to May 2025): built internal lead and sales tools from zero to one
 - PGDM E-Business, Welingkar; B.E. Computer Science, VTU
-
-### Human-in-the-loop, for now.
