@@ -11,6 +11,7 @@ Technical Product Manager, Bengaluru. B2B SaaS and cloud FinOps. I build the AI 
 | [kill-the-quote-spreadsheet](https://github.com/avinashgaurav/kill-the-quote-spreadsheet) | Procurement buyers retype five supplier quotes (Excel, PDF, photos, email) into one comparison sheet | The model reads values; code computes landed cost and cross-checks it. Disputed photo prices are excluded, not averaged. |
 | [followthrough](https://github.com/avinashgaurav/followthrough) | Promises made to clients on calls get lost between the call, the ship and telling the client | Every extracted insight must quote the transcript verbatim, or it is rejected. Humans triage before anything goes out. |
 | [kokum](https://github.com/avinashgaurav/kokum) | Cooking apps suggest dishes you cannot make with what is in your kitchen | Dish availability is computed in code; the model only ranks and explains, and invented recipe ids are dropped. |
+| [ClientLens](https://github.com/avinashgaurav/project-wingman-ClientLens) | Sales reps pitch from memory and misquote the product | A fact-check pass traces every claim in a draft to your knowledge base. Unsupported claims are removed; anything it cannot verify is not written into the doc. |
 | [EOD](https://github.com/avinashgaurav/EOD) | Writing the end-of-day update from memory | Local-first. Every README claim is tied to a test, and the build fails if they drift. |
 
 Each repo has a decisions log and states its known limitations.
