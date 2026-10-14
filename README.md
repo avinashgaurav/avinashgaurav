@@ -20,6 +20,4 @@ Technical Product Manager, Bengaluru. B2B SaaS and cloud FinOps. I build the AI 
 - **Jubilant Motorworks**, Associate PM (May 2024 to May 2025): built internal lead and sales tools from zero to one
 - PGDM E-Business, Welingkar; B.E. Computer Science, VTU
 
-[LinkedIn](https://www.linkedin.com/in/avinashgaurav)
-
-<sub>Human-in-the-loop, for now.</sub>
+### Human-in-the-loop, for now.
