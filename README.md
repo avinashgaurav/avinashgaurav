@@ -4,8 +4,6 @@
 
 I measured it on six projects: [The model reads, the code decides](ESSAY.md), with the misses as well as the wins.
 
-<a href="https://github.com/avinashgaurav/kill-the-quote-spreadsheet"><img src="assets/model-reads-code-decides.gif" alt="kill-the-quote: a supplier photo is read by the model, an unreadable price is left out rather than guessed, and code computes the totals. 107 of 107 prices exact, 0 invented, on a fictional corpus." width="480"></a>
-
 #### Projects
 
 | Project | Problem | How the AI is fenced in |
