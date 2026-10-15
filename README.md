@@ -2,6 +2,8 @@
 
 **How I build with AI: the model reads, the code decides.** Models extract, summarise and suggest. Plain, tested code does the counting, the state changes and the final call. Anything the model cannot back with a source gets flagged or dropped, not shipped.
 
+I measured it on six projects: [The model reads, the code decides](ESSAY.md), with the misses as well as the wins.
+
 #### Projects
 
 | Project | Problem | How the AI is fenced in |
