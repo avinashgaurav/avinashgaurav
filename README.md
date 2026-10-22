@@ -4,13 +4,14 @@
 
 **How I build with AI:** models extract, summarise and suggest. Plain, tested code does the counting, the state changes and the final call. Anything the model cannot back with a source gets flagged or dropped, not shipped.
 
-I tested it on six projects and wrote up the misses as well as the wins: [The model reads, the code decides](ESSAY.md).
+I tested six of these projects in one essay and wrote up the misses as well as the wins (Form & Flow's tests are in its own repo): [The model reads, the code decides](ESSAY.md).
 
 #### Projects
 
-| Project | Problem | How the AI is fenced in |
+| Project | Problem | How the AI is kept in check |
 |---|---|---|
 | [kill-the-quote-spreadsheet](https://github.com/avinashgaurav/kill-the-quote-spreadsheet) | Procurement buyers retype five supplier quotes (Excel, PDF, photos, email) into one comparison sheet | The model reads values; code computes landed cost and cross-checks it. Disputed photo prices are excluded, not averaged. |
+| [form-and-flow](https://github.com/avinashgaurav/form-and-flow) | Fitness apps give everyone the same plan and guess the numbers for Indian meals | Tested code works out the plan, calories, protein and safety checks. The AI only writes the coach's replies in friendly words. Crisis messages get a fixed, safe reply instead of an AI one (9 of 9 in testing, India helplines only). |
 | [followthrough](https://github.com/avinashgaurav/followthrough) | Promises made to clients on calls get lost between the call, the ship and telling the client. **In pilot with a sales team (October 2026).** | Every point it pulls from a call must quote the transcript word for word, or it is thrown out. A person sorts and checks the items before anything goes out. |
 | [kokum](https://github.com/avinashgaurav/kokum) | Cooking apps suggest dishes you cannot make with what is in your kitchen | Dish availability is computed in code; the model only ranks and explains, and made-up recipe ids are dropped. |
 | [ClientLens](https://github.com/avinashgaurav/clientlens) | Sales reps pitch from memory and misquote the product | A checker flags any claim it cannot trace to your knowledge base. Flagged claims are removed or the draft is held, and held drafts cannot be written to a doc. |
