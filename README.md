@@ -4,18 +4,18 @@
 
 **How I build with AI:** models extract, summarise and suggest. Plain, tested code does the counting, the state changes and the final call. Anything the model cannot back with a source gets flagged or dropped, not shipped.
 
-I measured it on six projects: [The model reads, the code decides](ESSAY.md), with the misses as well as the wins.
+I tested it on six projects and wrote up the misses as well as the wins: [The model reads, the code decides](ESSAY.md).
 
 #### Projects
 
 | Project | Problem | How the AI is fenced in |
 |---|---|---|
 | [kill-the-quote-spreadsheet](https://github.com/avinashgaurav/kill-the-quote-spreadsheet) | Procurement buyers retype five supplier quotes (Excel, PDF, photos, email) into one comparison sheet | The model reads values; code computes landed cost and cross-checks it. Disputed photo prices are excluded, not averaged. |
-| [followthrough](https://github.com/avinashgaurav/followthrough) | Promises made to clients on calls get lost between the call, the ship and telling the client. **In pilot with a sales team (October 2026).** | Every extracted insight must quote the transcript verbatim, or it is rejected. Humans triage before anything goes out. |
-| [kokum](https://github.com/avinashgaurav/kokum) | Cooking apps suggest dishes you cannot make with what is in your kitchen | Dish availability is computed in code; the model only ranks and explains, and invented recipe ids are dropped. |
-| [ClientLens](https://github.com/avinashgaurav/clientlens) | Sales reps pitch from memory and misquote the product | A validation pass flags claims it cannot trace to your knowledge base. Flagged claims are removed or the draft is held, and held drafts cannot be written to a doc. |
-| [EOD](https://github.com/avinashgaurav/EOD) | Writing the end-of-day update from memory. **In daily use by 5 people across a product and marketing team since mid-2026.** | Local-first. Every README claim is tied to a test, and the build fails if they drift. |
-| [pm-os](https://github.com/avinashgaurav/pm-os) | PMs rebuild the same PRD, roadmap and OKR documents from scratch | 82 modules; the prompts make the model mark unknowns instead of inventing them. A rubric eval on 10 modules cut invented figures from 28 to 2. |
+| [followthrough](https://github.com/avinashgaurav/followthrough) | Promises made to clients on calls get lost between the call, the ship and telling the client. **In pilot with a sales team (October 2026).** | Every point it pulls from a call must quote the transcript word for word, or it is thrown out. A person sorts and checks the items before anything goes out. |
+| [kokum](https://github.com/avinashgaurav/kokum) | Cooking apps suggest dishes you cannot make with what is in your kitchen | Dish availability is computed in code; the model only ranks and explains, and made-up recipe ids are dropped. |
+| [ClientLens](https://github.com/avinashgaurav/clientlens) | Sales reps pitch from memory and misquote the product | A checker flags any claim it cannot trace to your knowledge base. Flagged claims are removed or the draft is held, and held drafts cannot be written to a doc. |
+| [EOD](https://github.com/avinashgaurav/EOD) | Writing the end-of-day update from memory. **In daily use by 5 people across a product and marketing team since mid-2026.** | Local-first. Every claim in its README is tied to a test. If the two stop matching, the build fails. |
+| [pm-os](https://github.com/avinashgaurav/pm-os) | PMs rebuild the same PRD, roadmap and OKR documents from scratch | 82 modules. The prompts tell the model to mark what it does not know instead of making it up. Scored with a checklist on 10 modules, made-up figures fell from 28 to 2. |
 
 #### Background
 
