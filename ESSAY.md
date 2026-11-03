@@ -7,7 +7,7 @@
 > - My view: in a product, AI should do the reading, and plain, tested code should make every decision that matters.
 > - I tested seven of my own products against answers I wrote down first. The AI made up **0 prices**, wrote **0 wrong numbers** in 54 coach replies and let **0 of 13** false sales claims reach a document.
 > - The misses that mattered most were not wrong facts: a confident verb, a safety word list in my own code, a README that promised more than the code did.
-> - On new cases the fixes had never seen, the results held up, but they were lower than on the cases I had tuned them on. **Test on new cases before you believe your numbers.**
+> - On new cases the fixes had never seen, there were still no made-up prices and no wrong FollowThrough items, but the headline numbers were lower than on the cases I had tuned them on. **Test on new cases before you believe your numbers.**
 
 Every product I build with AI follows one rule. The AI does the reading: messy supplier quotes, call transcripts, a kitchen's contents, a day of scattered work, a message typed in Hinglish. Plain, tested code does the deciding: totals, rankings, plans, what gets shown and what gets sent.
 
@@ -35,22 +35,22 @@ That is the pattern I keep seeing: **a test that passes can still reveal a rule 
 
 ## Where the code was the weak part
 
-**Form & Flow** is a fitness coach for Indian users. Code works out the plan, calories and protein; the AI only words the coach's replies. I tested it on 27 cases, 7 in Hinglish, and ran the test 3 times. Across 54 AI replies, it wrote **0 wrong numbers**.
+**Form & Flow** is a fitness coach for Indian users. Code works out the plan, calories and protein; the AI only words the coach's replies. I tested it on 27 cases, 7 in Hinglish (Hindi and English mixed), and ran the test 3 times. Across 54 AI replies, it wrote **0 wrong numbers**. Two smaller slips did reach a user before the fixes: a user's own figure repeated back, and a made-up meal count.
 
-The biggest problems were in my code. Two of the 9 safety messages slipped past my safety word list and would have reached the AI. The list knew "hurt myself" but not "hurting myself", and "after eating" but not "after dinner". And my own checker wrongly rejected **23 of 47** good replies, almost all because of one rule about "reps in reserve". After the fixes, **9 of 9 safety messages were handled correctly** and wrong rejections fell to **4 of 47**. These are the same cases I fixed against, so they are a best case.
+The biggest problems were in my code. Two of the 7 crisis messages slipped past my safety word list and would have reached the AI. The list knew "hurt myself" but not "hurting myself", and "after eating" but not "after dinner". And my own checker wrongly rejected **23 of 47** good replies, almost all because of one rule about "reps in reserve". After the fixes, **all 9 safety cases were handled correctly** (7 of 7 crisis messages got the fixed safe reply, and 2 harmless lookalikes did not) and wrong rejections fell to **4 of 47**. These are the same cases I fixed against, so they are a best case.
 
-**Kill the Quote** caught me too. My README said prices the AI was unsure of were "routed to a person". They were not: "unsure" only marks a price on screen and does not keep it out of the totals. On a photo taken in low light, the AI read only 7 of 21 prices exactly and marked every wrong one as unsure. The AI knew. My code did nothing with it. I corrected the README. Making "unsure" actually block a price is still open.
+**Kill the Quote** caught me too. My README said prices the AI was unsure of were "routed to a person". They were not: "unsure" only marks a price on screen and does not keep it out of the totals. On a photo taken in low light, the AI read only 7 of 21 prices exactly and marked every wrong one as unsure. The AI knew, but "unsure" alone does not stop anything. In the app, a separate second read of photo prices keeps disputed ones out of the totals; it was switched off in this test. I corrected the README. Making "unsure" actually block a price is still open.
 
 Writing down what the code guarantees, then testing it, is how you find out which guarantees were really just hopes.
 
 ## Where fixing one thing broke another
 
-- **FollowThrough** pulls client requests and promises out of call transcripts. The first prompt found everything but padded the list: only 71% of what it flagged was right, including 4 items from a friendly check-in with nothing to act on. A tighter prompt made **100%** of flagged items right, but it found fewer real items. A person reviews this output anyway, so I chose being right over finding everything. That is a product decision, not the AI's.
+- **FollowThrough** pulls client requests and promises out of call transcripts. The first prompt found everything but padded the list: only 71% of what it flagged was right, including 4 items from a friendly check-in with nothing to act on. A tighter prompt made **100%** of flagged items right, but it found fewer real items. A person reviews this output anyway, so for now I accept finding fewer in exchange for being right. The merging behind those misses is the next thing to fix.
 - **Kill the Quote**'s fixes probably made the AI stricter about units. As a side effect, its confidence on one supplier's correct prices fell from 0.87 to 0.40. The prices are still exact, but a person now checks them for no reason.
 
 ## What happened on new cases
 
-Fixes written while looking at the misses always look good on those same cases. So for Kill the Quote and FollowThrough, I wrote new test cases, saved the answers before the AI saw them, changed nothing else, and ran each test 3 times.
+Fixes written while looking at the misses always look good on those same cases. So for Kill the Quote and FollowThrough, I wrote new test cases, saved the answers before the AI saw them, changed no app code or scoring, and ran each test 3 times.
 
 | | On the cases I fixed against | On new cases |
 |---|---|---|
@@ -59,9 +59,9 @@ Fixes written while looking at the misses always look good on those same cases. 
 | **FollowThrough:** flagged items that were right | 100% | **100%** |
 | **FollowThrough:** real items it found | 88 to 92% | **76%** (4 new calls) |
 
-Kill the Quote's misses were all on one very hard photo; without it, it read 62 of 62 in every run. FollowThrough never flagged a wrong item and ignored a line planted in a call to trick it. But it found fewer real promises, mostly because it merged two promises into one.
+The two Kill the Quote sets are not a like-for-like comparison: the 107 counts documents only, while the new set includes a very hard photo. Every new-case miss was on that photo; without it, it read 62 of 62 in every run. FollowThrough never flagged a wrong item and ignored a line planted in a call to trick it. But it found fewer real promises, mostly because it merged two promises into one.
 
-What protects the user held: no made-up prices, no wrong items. The headline numbers dropped. That gap is why new cases matter.
+No made-up prices and no wrong FollowThrough items, but the headline numbers dropped. That gap is why new cases matter.
 
 ## What these numbers are not
 
