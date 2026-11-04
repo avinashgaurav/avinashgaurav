@@ -7,7 +7,7 @@
 > - My view: in a product, AI should do the reading, and plain, tested code should make every decision that matters.
 > - I tested seven of my own products against answers I wrote down first. The AI made up **0 prices**, wrote **0 wrong numbers** in 54 coach replies and let **0 of 13** false sales claims reach a document.
 > - The misses that mattered most were not wrong facts: a confident verb, a safety word list in my own code, a README that promised more than the code did.
-> - On new cases the fixes had never seen, there were still no made-up prices and no wrong FollowThrough items, but the headline numbers were lower than on the cases I had tuned them on. **Test on new cases before you believe your numbers.**
+> - On new cases the fixes had never seen, there were still no made-up prices and no wrong FollowThrough items, but the headline numbers were lower than on the cases I had tuned them on. The biggest drop was Form & Flow's safety word list: it caught 1 of 14 new safety messages. **Test on new cases before you believe your numbers.**
 
 Every product I build with AI follows one rule. The AI does the reading: messy supplier quotes, call transcripts, a kitchen's contents, a day of scattered work, a message typed in Hinglish. Plain, tested code does the deciding: totals, rankings, plans, what gets shown and what gets sent.
 
@@ -37,7 +37,7 @@ That is the pattern I keep seeing: **a test that passes can still reveal a rule 
 
 **Form & Flow** is a fitness coach for Indian users. Code works out the plan, calories and protein; the AI only words the coach's replies. I tested it on 27 cases, 7 in Hinglish (Hindi and English mixed), and ran the test 3 times. Across 54 AI replies, it wrote **0 wrong numbers**. Two smaller slips did reach a user before the fixes: a user's own figure repeated back, and a made-up meal count.
 
-The biggest problems were in my code. Two of the 7 crisis messages slipped past my safety word list and would have reached the AI. The list knew "hurt myself" but not "hurting myself", and "after eating" but not "after dinner". And my own checker wrongly rejected **23 of 47** good replies, almost all because of one rule about "reps in reserve". After the fixes, **all 9 safety cases were handled correctly** (7 of 7 crisis messages got the fixed safe reply, and 2 harmless lookalikes did not) and wrong rejections fell to **4 of 47**. These are the same cases I fixed against, so they are a best case.
+The biggest problems were in my code. Two of the 7 crisis messages slipped past my safety word list and would have reached the AI. The list knew "hurt myself" but not "hurting myself", and "after eating" but not "after dinner". And my own checker wrongly rejected **23 of 47** good replies, almost all because of one rule about "reps in reserve". After the fixes, **all 9 safety cases were handled correctly** (7 of 7 crisis messages got the fixed safe reply, and 2 harmless lookalikes did not) and wrong rejections fell to **4 of 47**. These are the same cases I fixed against, so they are a best case. A later test proved it: on new crisis wordings the code had never seen, such as "ending it all" and Hinglish phrasings, the word list caught 0 of 8. A word list only knows the words it was given. A fix is in progress, and it will be tested on another fresh set.
 
 **Kill the Quote** caught me too. My README said prices the AI was unsure of were "routed to a person". They were not: "unsure" only marks a price on screen and does not keep it out of the totals. On a photo taken in low light, the AI read only 7 of 21 prices exactly and marked every wrong one as unsure. The AI knew, but "unsure" alone does not stop anything. In the app, a separate second read of photo prices keeps disputed ones out of the totals; it was switched off in this test. I corrected the README. Making "unsure" actually block a price is still open.
 
@@ -61,15 +61,15 @@ Fixes written while looking at the misses always look good on those same cases. 
 
 The two Kill the Quote sets are not a like-for-like comparison: the 107 counts documents only, while the new set includes a very hard photo. Every new-case miss was on that photo; without it, it read 62 of 62 in every run. FollowThrough never flagged a wrong item and ignored a line planted in a call to trick it. But it found fewer real promises, mostly because it merged two promises into one.
 
-No made-up prices and no wrong FollowThrough items, but the headline numbers dropped. That gap is why new cases matter.
+No made-up prices and no wrong FollowThrough items, but the headline numbers dropped. Form & Flow dropped furthest: on new wordings its safety word list caught 1 of 14 real safety messages, against 9 of 9 on the cases it was built on. That gap is why new cases matter.
 
 ## What these numbers are not
 
 - **Small, made-up test sets.** Four calls, ten days, eighteen decks. One item going the other way moves some numbers by 3 to 5 points.
-- **Mostly scored on the same cases I fixed against.** Only Kill the Quote and FollowThrough have new-case results. For the other five, the after-fix numbers are a best case.
+- **Mostly scored on the same cases I fixed against.** Kill the Quote, FollowThrough and Form & Flow have new-case results. For the others, the after-fix numbers are a best case.
 - **Not the way the live apps run.** I ran the tests through the Claude Code command-line tool, using each app's own prompts. EOD is the exception: that tool is how EOD really runs.
 - **One company's AI.** Every test used Anthropic's Claude models.
-- **Some scores came from me or from another AI.** I checked EOD, Kokum and Form & Flow by hand. Another AI graded parts of PM-OS and FollowThrough.
+- **Some scores came from me or from another AI.** I checked EOD, Kokum and Form & Flow's first run by hand. Another AI graded parts of PM-OS, FollowThrough and Form & Flow's new-case run.
 
 Every miss, method and raw result is in each repo's `EVALS.md`.
 
