@@ -7,7 +7,7 @@
 > - My view: in a product, AI should do the reading, and plain, tested code should make every decision that matters.
 > - I tested seven of my own products against answers I wrote down first. The AI made up **0 prices**, wrote **0 wrong numbers** in 54 coach replies and let **0 of 13** false sales claims reach a document.
 > - The misses that mattered most were not wrong facts: a confident verb, a safety word list in my own code, a README that promised more than the code did.
-> - On new cases the fixes had never seen, there were still no made-up prices and no wrong FollowThrough items, but the headline numbers were lower than on the cases I had tuned them on. **Test on new cases before you believe your numbers.**
+> - On new cases the fixes had never seen, there were still no made-up prices and no wrong FollowThrough items, but the headline numbers were lower than on the cases I had tuned them on. The biggest drop was Form & Flow's safety word list: it caught 1 of 14 new safety messages. **Test on new cases before you believe your numbers.**
 
 Every product I build with AI follows one rule. The AI does the reading: messy supplier quotes, call transcripts, a kitchen's contents, a day of scattered work, a message typed in Hinglish. Plain, tested code does the deciding: totals, rankings, plans, what gets shown and what gets sent.
 
@@ -61,15 +61,15 @@ Fixes written while looking at the misses always look good on those same cases. 
 
 The two Kill the Quote sets are not a like-for-like comparison: the 107 counts documents only, while the new set includes a very hard photo. Every new-case miss was on that photo; without it, it read 62 of 62 in every run. FollowThrough never flagged a wrong item and ignored a line planted in a call to trick it. But it found fewer real promises, mostly because it merged two promises into one.
 
-No made-up prices and no wrong FollowThrough items, but the headline numbers dropped. That gap is why new cases matter.
+No made-up prices and no wrong FollowThrough items, but the headline numbers dropped. Form & Flow dropped furthest: on new wordings its safety word list caught 1 of 14 real safety messages, against 9 of 9 on the cases it was built on. That gap is why new cases matter.
 
 ## What these numbers are not
 
 - **Small, made-up test sets.** Four calls, ten days, eighteen decks. One item going the other way moves some numbers by 3 to 5 points.
-- **Mostly scored on the same cases I fixed against.** Only Kill the Quote and FollowThrough have new-case results. For the other five, the after-fix numbers are a best case.
+- **Mostly scored on the same cases I fixed against.** Kill the Quote, FollowThrough and Form & Flow have new-case results. For the others, the after-fix numbers are a best case.
 - **Not the way the live apps run.** I ran the tests through the Claude Code command-line tool, using each app's own prompts. EOD is the exception: that tool is how EOD really runs.
 - **One company's AI.** Every test used Anthropic's Claude models.
-- **Some scores came from me or from another AI.** I checked EOD, Kokum and Form & Flow by hand. Another AI graded parts of PM-OS and FollowThrough.
+- **Some scores came from me or from another AI.** I checked EOD, Kokum and Form & Flow's first run by hand. Another AI graded parts of PM-OS, FollowThrough and Form & Flow's new-case run.
 
 Every miss, method and raw result is in each repo's `EVALS.md`.
 
