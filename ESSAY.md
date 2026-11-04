@@ -7,7 +7,7 @@
 > - My view: in a product, AI should do the reading, and plain, tested code should make every decision that matters.
 > - I tested seven of my own products against answers I wrote down first. The AI made up **0 prices**, wrote **0 wrong numbers** in 54 coach replies and let **0 of 13** false sales claims reach a document.
 > - The misses that mattered most were not wrong facts: a confident verb, a safety word list in my own code, a README that promised more than the code did.
-> - On new cases, most results held. The biggest gap was Form & Flow's safety word list: it caught 1 of 14 new safety messages. An AI safety screen closed that gap in testing, but it is not live yet. **Test on new cases before you believe your numbers.**
+> - On new cases, there were still no made-up prices, but some results dropped: FollowThrough found 76% of real items (88 to 92% before), and Kill the Quote read 93% of prices exactly (107 of 107 before, on a set that is not like for like). The biggest gap was Form & Flow's old safety word list: it caught 1 of 14 new safety messages. An AI safety screen closed that gap in testing (on a small fresh set), but it is not live yet. So test on new cases before you believe your numbers.
 
 Every product I build with AI follows one rule. The AI does the reading: messy supplier quotes, call transcripts, a kitchen's contents, a day of scattered work, a message typed in Hinglish. Plain, tested code does the deciding: totals, rankings, plans, what gets shown and what gets sent.
 
@@ -51,7 +51,7 @@ Writing down what the code guarantees, then testing it, is how you find out whic
 
 ## What happened on new cases
 
-Fixes written while looking at the misses always look good on those same cases. So for all seven products I wrote new cases with new people, products and wording, saved the answers before the AI saw them, changed no app code or scoring, and ran each set 3 times (ClientLens's pitch test once).
+Fixes written while looking at the misses always look good on those same cases. So for all seven products I wrote new cases with new people, products and wording, saved the answers before the AI saw them, changed no app code or prompts, and ran each set 3 times (ClientLens's pitch test once). Two scoring steps did change after a first look, and I say so: I rewrote the instructions for Kokum's AI reviewer once after its first pass (and checked them on sentences with known answers), and I adjusted EOD's rules after the first scoring.
 
 | Product | What I measured | Cases I fixed against | New cases |
 |---|---|---|---|
@@ -61,7 +61,7 @@ Fixes written while looking at the misses always look good on those same cases. 
 | FollowThrough | Real items it found | 88 to 92% | **76%** |
 | ClientLens | Knowledge-base answers right, Gemini search | 66 of 69 | **67 of 72** |
 | ClientLens | Same, keyword search | 57 of 69 | **60 of 72** |
-| ClientLens | Pitch drafts let into a doc with a false claim | 0 of 13 | **0 of 5** (1 run) |
+| ClientLens | Writable pitch decks matching a false-claim pattern | 0 of 13 | **0 of 5** (1 run) |
 | Kokum | Grocery lists read fully correctly | 20 of 20 | **20 of 20** (49 of 49 lines) |
 | Kokum | Look-alike or unknown items wrongly matched | 0 of 5 | **0 of 11** |
 | Kokum | Top dish is one you can cook now | 10 of 10 | **9 of 9** |
@@ -69,15 +69,15 @@ Fixes written while looking at the misses always look good on those same cases. 
 | EOD | Facts kept / work items kept | 30 of 30 / 29 of 29 | **38 of 38 / 32 of 32** |
 | EOD | Weekly summaries that claimed more | not tested | **0 of 2** |
 | PM-OS | Required sections present | 87 of 88 | **87 of 88** |
-| PM-OS | Made-up figures stated as fact | 2 or 3 in 10 documents | **5 in 30 documents** |
+| PM-OS | Made-up figures stated as fact | 2 or 3 in 10 documents | **5 in 30 documents** (first #97 prompt, before the INVEST rewording) |
 | Form & Flow | Wrong numbers in coach replies | 0 of 54 | **0 of 60** |
-| Form & Flow | Real safety messages the word list caught | 7 of 7 | **1 of 14** |
+| Form & Flow | Real safety messages the old word list caught (before broadening) | 7 of 7 | **1 of 14** |
 
-New-case results were the same in every run except Kill the Quote (70 to 72 of 77), FollowThrough (71 to 79%) and PM-OS (0, 3 and 2 figures). Every Kill the Quote miss was on one very hard low-light photo; without it, it read 62 of 62. FollowThrough's misses were mostly two promises by one person merged into one. ClientLens's 67 of 72 is the same as 66 of 69 at this size, not a drop.
+New-case results were the same in every run except Kill the Quote (70 to 72 of 77), FollowThrough (71 to 79%), ClientLens with Gemini (22, 22 and 23 right per run), PM-OS (0, 3 and 2 figures) and Form & Flow's coach replies (3, 3 and 5 of 20 rejected; 4 of 20 cases changed between runs). Every Kill the Quote miss was on one very hard low-light photo; without it, it read 62 of 62. FollowThrough's misses were mostly two promises by one person merged into one. ClientLens's 67 of 72 is the same as 66 of 69 at this size, not a drop.
 
 One new miss, and one change to disclose. Kokum's dish sentences were graded by another AI, which I first checked on 20 sentences with known answers (10 of 10 bad ones caught, 0 of 10 good ones flagged). When an item was in the kitchen but not enough of it, the AI sometimes argued with the app's missing list ("your pantry shows you have some"): 1, 4 and 0 of 80 sentences in the 3 runs. On EOD, my hand check for upgraded verbs is now a set of automatic rules; I adjusted them once after the first scoring, because they flagged fine lines such as "to be sent once legal checks".
 
-Form & Flow dropped furthest. On new wordings, such as "ending it all" and Hinglish phrasings, the word list caught 0 of 8 crisis messages. A word list only knows the words it was given. So I broadened it and added an AI safety screen: a small model that may only name a category, while code sends anything other than a clear "none", including an error, to the fixed safe reply. On a fresh hidden set written before the fix (24 safety messages, 16 harmless lookalikes), all 24 got the right fixed reply and 0 reached the coach, on both Claude Haiku and Google's Gemini Flash-Lite. But 17 of the 24 share wording with what the fix was tuned on. On the 7 that do not, the word list caught 1 and the screen caught the other 6.
+Form & Flow dropped furthest. On new wordings, such as "ending it all" and Hinglish phrasings, the old word list caught 0 of 8 crisis messages. A word list only knows the words it was given. So I broadened it and added an AI safety screen: a small model that may only name a category, while code sends anything other than a clear "none", including an error, to the fixed safe reply. On a fresh hidden set written before the fix (24 safety messages, 16 harmless lookalikes), all 24 got the right fixed reply and 0 reached the coach, with Claude Haiku as the screen. But 17 of the 24 share wording with what the fix was tuned on. On the 7 fresh messages with wording the fix had not seen, the broader word list caught 1, and the screen caught the other 6.
 
 That screen is not live. Today the app runs on the phone only, with no backend, so there is no AI coach and no AI screen. The broader word list is live, and users rely on it alone.
 
@@ -86,7 +86,7 @@ That screen is not live. Today the app runs on the phone only, with no backend, 
 - **Small, made-up test sets.** Four calls, ten days, eighteen decks. One item going the other way moves some numbers by 3 to 5 points.
 - **New cases, but not real users.** I or Claude wrote every new case, so they share our habits.
 - **Not the way the live apps run.** I ran the tests through the Claude Code command-line tool with each app's own prompts, or called the AI directly. EOD is the exception: that tool is how EOD really runs.
-- **Mostly one company's AI.** Claude answered almost every test. Gemini was tested for ClientLens's search and, in a change not yet merged, for Form & Flow.
+- **Mostly one company's AI.** Claude answered almost every test. Gemini was tested only for ClientLens's search.
 - **Some scores came from another AI.** I checked EOD, Kokum and Form & Flow's first runs by hand. Another AI graded PM-OS's figures and FollowThrough's matches, and on the new cases also Kokum's sentences, EOD's updates and some Form & Flow replies. I have not checked those labels by hand yet.
 
 Every miss, method and raw result is in each repo's `EVALS.md`.
