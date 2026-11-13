@@ -1,6 +1,4 @@
-### Hi, I'm Avinash
-
-Technical PM at ZopDev (multi-cloud FinOps). On the side I build small AI tools and test them properly.
+### Human-in-the-loop, for now.
 
 My rule: the model reads and suggests; plain, tested code does the counting and makes the final call. I write up the misses too: [The model reads, the code decides](ESSAY.md).
 
@@ -10,11 +8,11 @@ My rule: the model reads and suggests; plain, tested code does the counting and 
 
 | Project | What it does | Tested |
 |---|---|---|
-| [FollowThrough](https://github.com/avinashgaurav/followthrough) | Tracks promises made on client calls, each tied to an exact quote | In pilot with a sales team |
 | [ClientLens](https://github.com/avinashgaurav/clientlens) | Sales copilot that fact-checks every pitch against your knowledge base | 0/13 planted false claims reached a doc |
+| [FollowThrough](https://github.com/avinashgaurav/followthrough) | Tracks promises made on client calls, each tied to an exact quote | In pilot with a sales team |
 | [EOD](https://github.com/avinashgaurav/EOD) | Builds your end-of-day update from files on your Mac | Used daily by 5 people |
-| [Kokum](https://github.com/avinashgaurav/kokum) | Suggests dishes you can actually cook with what you have | 0/80 wrong ingredients |
 | [PM-OS](https://github.com/avinashgaurav/pm-os) | Templates and AI drafts for PRDs, roadmaps and OKRs | Made-up figures down from 28 to 2 |
+| [Kokum](https://github.com/avinashgaurav/kokum) | Suggests dishes you can actually cook with what you have | 0/80 wrong ingredients |
 | [Bidline](https://github.com/avinashgaurav/bidline) | Compares supplier quotes; your Claude reads them, code does the maths | 150/150 demo prices exact |
 
 #### Background
