@@ -1,8 +1,9 @@
-### Human-in-the-loop, for now.
-
-My rule: the model reads and suggests; plain, tested code does the counting and makes the final call. I write up the misses too: [The model reads, the code decides](ESSAY.md).
-
 [Portfolio](https://avinash-portfolio-six-puce.vercel.app/hi/github) · [LinkedIn](https://www.linkedin.com/in/avinashgaurav) · [Substack](https://avigaurav.substack.com)
+
+### Human-in-the-loop, for now.
+AI reads and suggests; tested code makes the call. I publish the misses too: [the essay](ESSAY.md).
+
+**Stack:** TypeScript · Python · Next.js · Expo · Claude API · MCP · Supabase · Vercel
 
 #### Projects
 
